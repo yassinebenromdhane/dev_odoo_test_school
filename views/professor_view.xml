@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="professor_list_view">
+      <field name="name">professor list</field>
+      <field name="model">school.professor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="f_name"/>
+          <field name="l_name"/>
+          <field name="sexe"/>
+          <field name="identity_card"/>
+          <field name="birthday"/>
+          <field name="start_date"/>
+        </tree>
+      </field>
+    </record>
+
+     <record model="ir.ui.view" id="professor_form_view">
+      <field name="name">professor Form</field>
+      <field name="model">school.professor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="f_name"/>
+          <field name="l_name"/>
+          <field name="sexe"/>
+          <field name="identity_card"/>
+          <field name="birthday"/>
+          <field name="start_date"/>
+          <field name="adresse"/>
+          <field name="email"/>
+          <field name="phone"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="professor_action_window">
+      <field name="name">Professor window</field>
+      <field name="res_model">school.professor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- menu categories -->
+    <menuitem name="Professors" id="school_professor_cat" parent="school_menu_root"/>
+    <!--<menuitem name="Menu 2" id="school.menu_2" parent="school.menu_root"/>-->
+    <!-- actions -->
+
+    <menuitem name="List of Professors" id="school_professor_list" parent="school_professor_cat"
+              action="professor_action_window"/>
+    <!-- <menuitem name="Server to list" id="school" parent="school.menu_2"
+              action="school.action_server"/> -->
+
+  </data>
+</odoo>
