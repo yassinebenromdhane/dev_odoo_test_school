@@ -16,22 +16,34 @@
         </tree>
       </field>
     </record>
-    
-     <record model="ir.ui.view" id="professor_form_view">
-      <field name="name">professor Form</field>
+
+    <record id="professor_view_form" model="ir.ui.view">
+      <field name="name">Professor form</field>
       <field name="model">school.professor</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="f_name"/>
-          <field name="l_name"/>
-          <field name="sexe"/>
-          <field name="identity_card"/>
-          <field name="birthday"/>
-          <field name="start_date"/>
-          <field name="adresse"/>
-          <field name="email"/>
-          <field name="phone"/>
-        </tree>
+        <form string="Professor form">
+          <sheet>
+            <group>
+              <field name="f_name"/>
+              <field name="l_name"/>
+              <field name="sexe"/>
+              <field name="identity_card"/>
+              <field name="birthday"/>
+              <field name="start_date"/>
+            </group>
+            <notebook>
+              <page string="Page 1">
+                <field name="desc"/>
+              </page>
+              <page string="Page 2">
+                
+              </page>
+              <page string="Page 3">
+                
+              </page>
+            </notebook>
+          </sheet>
+        </form>
       </field>
     </record>
 

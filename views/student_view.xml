@@ -3,47 +3,91 @@
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="student_list_view">
-      <field name="name">Student list</field>
+      <field name="name">student list</field>
       <field name="model">school.student</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree sample="1" multi_edit="1">
           <field name="f_name"/>
           <field name="l_name"/>
           <field name="sexe"/>
           <field name="identity_card"/>
           <field name="birthday"/>
           <field name="registration_date"/>
+          <field name="activity_ids" widget="list_activity"/>
+          <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state == 'in_consultation'" 
+          decoration-danger="state == 'cancel'"/>
         </tree>
       </field>
     </record>
 
-     <record model="ir.ui.view" id="student_form_view">
+    <record model="ir.ui.view" id="student_form_view">
       <field name="name">Student Form</field>
       <field name="model">school.student</field>
       <field name="arch" type="xml">
         <form>
-              <!-- <field name="image" widget="image"/> -->
+          <header>
+            <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}"/>
+          </header>
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="priority" widget="priority" class="mr-3"/>
+              </h1>
+            </div>
+            <group>
+
               <field name="f_name"/>
               <field name="l_name"/>
+            </group>
+            <group>
               <field name="sexe"/>
               <field name="identity_card"/>
+              <field name="classroom_id"/>
+            </group>
+            <group>
               <field name="birthday"/>
               <field name="registration_date"/>
-              <field name="adresse"/>
+              <field name="age" />
+            </group>
+            <group>
               <field name="email"/>
               <field name="phone"/>
-              
-              <button name="action_test" string="Click Me !! " type="object" />
+              <field name="adresse"/>
+              <button string="Click" name="action_test" type="object" class="oe_highlight"/>
+            </group>
+          </sheet>
+          <!-- Chatter  -->
+          <div class="oe_chatter">
+            <field name="message_follower_ids" groups="base.group_user"/>
+            <field name="activity_ids" />
+            <field name="message_ids" />
+          </div>
+
         </form>
-        <!-- chatter -->
-          <!-- <div class="oe_chatter">
-              <field name="message_follower_ids" widget="mail_followers"/>
-              <field name="activity_ids" widget="mail_activity"/>
-              <field name="message_ids" widget="mail_thread"/>
-          </div> -->
       </field>
     </record>
 
+    <record model="ir.ui.view" id="student_list_search">
+      <field name="name">Student search</field>
+      <field name="model">school.student</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="f_name" string="First name"/>
+          <field name="l_name" string="Last name"/>
+          <field name="identity_card" string="Identity Card"/>
+          <filter name="filter_male" string="Male" domain="[('sexe','=','male')]" />
+          <separator/>
+          <filter name="filter_female" string="Female" domain="[('sexe','=','female')]" />
+          <group expand="0" string="Group by">
+            <filter string="sexe" name="group_by_sexe" context="{'group_by':'sexe'}"/>
+            <filter string="classroom_id" name="group_by_classroom" context="{'group_by':'classroom_id'}"/>
+          </group>
+          <searchpanel>
+            <field name="sexe" enable_counters="1"/>
+          </searchpanel>
+        </search>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
 
@@ -63,10 +107,8 @@
     <!--<menuitem name="Menu 2" id="school.menu_2" parent="school.menu_root"/>-->
     <!-- actions -->
 
-    <menuitem name="List of students" id="school_student_list" parent="school_student_cat"
-              action="student_action_window"/>
-    <!-- <menuitem name="Server to list" id="school" parent="school.menu_2"
-              action="school.action_server"/> -->
+    <menuitem name="List of students" id="school_student_list" parent="school_student_cat" action="student_action_window"/>
+    <!-- <menuitem name="Server to list" id="school" parent="school.menu_2" action="school.action_server"/> -->
 
   </data>
 </odoo>

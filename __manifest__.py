@@ -29,7 +29,7 @@
         # ! 'security/groups.xml',
         'views/student_view.xml',
         'views/professor_view.xml',
-        'views/classroom_view.xml',
+        'views/classroom_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

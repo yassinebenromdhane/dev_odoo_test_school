@@ -7,3 +7,5 @@ class SchoolClassroom(models.Model):
 
     name = fields.Char()
     code = fields.Char()
+    # depatment_id=fields.Many2many(comodel_name="school.depatment" , string="Department")
+    # code_dep=fields.Char('ode department',related="depatment_id.code")

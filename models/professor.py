@@ -15,6 +15,7 @@ class SchoolProfessor(models.Model):
     start_date=fields.Datetime('Start Date')
     email=fields.Char()
     phone=fields.Char()
+    desc=fields.Html("type here")
 
     # @api.depends('value')
     # def _value_pc(self):

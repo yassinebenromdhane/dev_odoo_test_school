@@ -5,9 +5,9 @@ from odoo import http
 from odoo.http import request, Response
 
 class School(http.Controller):
-    @http.route('/school/school', auth='public',type='http',csrf=False,methods=['POST'])
+    @http.route('/school/school', auth='public',type='json',csrf=False,methods=['GET'])
     def index(self, **kw):
-        students_rec =request.env['school.student'].search([])
+        students_rec =request.env['school.student'].search([("l_name","=","ben romdhane")])
         students=[]
         for rec in students_rec:
             # birthday = datetime.strptime(rec.birthday, '%Y-%m-%d').date()
@@ -28,7 +28,7 @@ class School(http.Controller):
             'students':students        
         }
         data_json=json.dumps(data)
-        return data_json
+        return data
         # return Response(json.dumps(body), headers=headers)
     def action_test(self):
         print("clicked me!!")
