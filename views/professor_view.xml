@@ -16,7 +16,7 @@
         </tree>
       </field>
     </record>
-
+    
      <record model="ir.ui.view" id="professor_form_view">
       <field name="name">professor Form</field>
       <field name="model">school.professor</field>

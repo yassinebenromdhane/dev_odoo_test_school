@@ -7,7 +7,6 @@
       <field name="model">school.student</field>
       <field name="arch" type="xml">
         <tree>
-          <!-- <field name="image" widget="image"/> -->
           <field name="f_name"/>
           <field name="l_name"/>
           <field name="sexe"/>
@@ -29,7 +28,6 @@
               <field name="sexe"/>
               <field name="identity_card"/>
               <field name="birthday"/>
-              <field name="age"/>
               <field name="registration_date"/>
               <field name="adresse"/>
               <field name="email"/>
